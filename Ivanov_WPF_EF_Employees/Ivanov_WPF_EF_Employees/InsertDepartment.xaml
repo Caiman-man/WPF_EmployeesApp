@@ -1,0 +1,67 @@
+﻿<Window x:Name="InsertDepartmentWindow" x:Class="Ivanov_WPF_EF_Employees.InsertDepartment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ivanov_WPF_EF_Employees"
+        mc:Ignorable="d"
+        Title="Insert department" Height="270" Width="415" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+
+
+    <Grid Background="#161523" MouseDown="Grid_MouseDown">
+
+        <TextBox x:Name="titleTB"
+                 Margin="18,21,0,0" 
+                 TextWrapping="Wrap" 
+                 Text=" Title" 
+                 Foreground="White"
+                 Background="#211F2E"
+                 BorderBrush="#FF434343"
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" PreviewMouseDown="titleTB_PreviewMouseDown" HorizontalAlignment="Left" Width="365" Height="30" VerticalAlignment="Top" TextChanged="titleTB_TextChanged"/>
+        <TextBox x:Name="headIDTB"
+                 Margin="18,59,0,0" 
+                 TextWrapping="Wrap" 
+                 Text=" Head ID" 
+                 Foreground="White"
+                 Background="#211F2E" 
+                 BorderBrush="#FF434343" 
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" PreviewMouseDown="headIDTB_PreviewMouseDown" HorizontalAlignment="Left" Width="365" Height="30" VerticalAlignment="Top" TextChanged="headIDTB_TextChanged"/>
+        <TextBox x:Name="addressTB"
+                 Margin="18,96,0,0" 
+                 TextWrapping="Wrap" 
+                 Text=" Address" 
+                 Foreground="White"
+                 Background="#211F2E" 
+                 BorderBrush="#FF434343" 
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" PreviewMouseDown="addressTB_PreviewMouseDown" HorizontalAlignment="Left" Width="365" Height="30" VerticalAlignment="Top"/>
+        <TextBox x:Name="phoneTB"
+                 Margin="18,133,0,0" 
+                 TextWrapping="Wrap" 
+                 Text=" Phone" 
+                 Foreground="White"
+                 Background="#211F2E" 
+                 BorderBrush="#FF434343"
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" PreviewMouseDown="phoneTB_PreviewMouseDown" HorizontalAlignment="Left" Width="365" Height="30" VerticalAlignment="Top" TextChanged="phoneTB_TextChanged"/>
+
+        <Button x:Name="insertB"
+                Content="Insert" 
+                Margin="18,188,0,0"
+                Background="#FF673AB7"
+                HorizontalAlignment="Left" Width="110" Click="insertB_Click" Height="30" VerticalAlignment="Top" FontSize="15"/>
+        <Button x:Name="clearB"
+                Content="Clear" 
+                Margin="145,188,0,0"
+                Background="#FF673AB7"
+                HorizontalAlignment="Left" Width="110" Click="clearB_Click" Height="30" VerticalAlignment="Top" FontSize="15"/>
+        <Button x:Name="cancelB"
+                Content="Cancel" 
+                Margin="273,188,0,0"
+                Background="#FF673AB7"
+                HorizontalAlignment="Left" Width="110" Click="cancelB_Click" Height="30" VerticalAlignment="Top" FontSize="15"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,303 @@
+﻿<Window x:Class="Ivanov_WPF_EF_Employees.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ivanov_WPF_EF_Employees"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="15"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Ivanov_WPF_EF_Employees" Height="630" Width="1080" MinWidth="1080" MinHeight="630" WindowStartupLocation="CenterScreen" Icon="Icons/icon_1.ico">
+
+    <Window.Resources>
+
+        <!--group style-->
+        <Style x:Key="GroupHeaderStyle" TargetType="{x:Type GroupItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                        <Expander x:Name="exp" IsExpanded="True" Background="White" Foreground="Black">
+                            <Expander.Header>
+                                <TextBlock Text="{Binding Name}" />
+                            </Expander.Header>
+                            <ItemsPresenter />
+                        </Expander>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!--main grid-->
+    <Grid x:Name="main_grid" Background="#211F2E">
+
+        <!--menu_panel-->
+        <Grid x:Name="menu_panel"
+              HorizontalAlignment="Left"
+              Width="180"
+              Background="#211F2E"
+              RenderTransformOrigin="0.5, 0.5">
+
+            <Button x:Name="showAll_B" 
+                    Content="Show All" 
+                    Height="25"
+                    Width="150"
+                    Background="#FF673AB7"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Margin="15,15,0,0" 
+                    FontSize="15" 
+                    BorderBrush="#FF673AB7" 
+                    FontWeight="Normal" 
+                    Click="showAllButton_Click" Cursor="Hand">
+            </Button>
+
+            <ComboBox x:Name="departmentFilter_CB"
+                      HorizontalAlignment="Left" 
+                      Height="25"
+                      Width="150" 
+                      VerticalAlignment="Top" 
+                      Margin="15,60,0,0" 
+                      Foreground="Black" 
+                      Background="#DDFFFFFF">
+            </ComboBox>
+
+            <Button x:Name="departmentFilter_B" 
+                    Content="Department filter" 
+                    Height="25" 
+                    Width="150" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Margin="15,90,0,0" 
+                    FontSize="15" 
+                    FontWeight="Normal" Click="departmentFilterB_Click">
+            </Button>
+
+            <ComboBox x:Name="employeeFilter_CB" 
+                      Height="25"
+                      Width="150" 
+                      VerticalAlignment="Top" 
+                      HorizontalAlignment="Left" 
+                      Margin="15,135,0,0" 
+                      Foreground="Black" 
+                      Background="#DDFFFFFF">
+            </ComboBox>
+
+            <Button x:Name="employeeFilter_B" 
+                    Content="Employee filter" 
+                    Height="25" 
+                    Width="150" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Margin="15,165,0,0" 
+                    FontSize="15" 
+                    FontWeight="Normal" Click="employeeFilterB_Click" Cursor="Hand">
+            </Button>
+
+            <TextBox x:Name="find_TB" 
+                     Height="25"
+                     Width="150" 
+                     VerticalAlignment="Top" 
+                     HorizontalAlignment="Left" 
+                     Margin="15,210,0,0" 
+                     TextWrapping="Wrap" 
+                     Text="" 
+                     Background="#DDFFFFFF" 
+                     FontSize="15" Foreground="Black">
+            </TextBox>
+
+            <Button x:Name="find_B" 
+                    Content="Find singer by ID" 
+                    Height="25" 
+                    Width="150" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Margin="15,240,0,0" 
+                    FontSize="15" 
+                    FontWeight="Normal" Cursor="Hand" Click="find_B_Click">
+            </Button>
+
+            <ToggleButton x:Name="editMode_ToggleB"
+                          Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                          ToolTip="MaterialDesignSwitchToggleButton" 
+                          Margin="15,281,0,0" 
+                          Width="45" 
+                          Height="20" 
+                          Background="#7ED048" 
+                          VerticalAlignment="Top" 
+                          HorizontalAlignment="Left" Checked="editMode_ToggleB_Checked" Unchecked="editMode_ToggleB_Unchecked"/>
+
+            <Label Content="Edit mode" 
+                   HorizontalAlignment="Left" 
+                   Margin="60,277,0,0" 
+                   VerticalAlignment="Top" 
+                   Foreground="#DDFFFFFF" 
+                   FontSize="15">
+            </Label>
+
+            <ComboBox x:Name="editMode_CB" 
+                      Height="25"
+                      Width="150" 
+                      VerticalAlignment="Top" 
+                      HorizontalAlignment="Left"     
+                      Margin="15,311,0,0" 
+                      Foreground="#DD000000" 
+                      Background="#DDFFFFFF" 
+                      FontSize="15" 
+                      IsTextSearchEnabled="False" SelectionChanged="editMode_CB_SelectionChanged">
+                <ComboBoxItem 
+                        Content="Departments" 
+                        Background="White" 
+                        Foreground="#DD000000">
+                </ComboBoxItem>
+                <ComboBoxItem 
+                        Background="White" 
+                        Content="Employees" 
+                        Foreground="#DD000000">
+                </ComboBoxItem>
+            </ComboBox>
+
+            <Button x:Name="insert_B" 
+                    Content="Insert" 
+                    Height="25"
+                    Width="150"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Background="#7ED048"
+                    Margin="15,356,0,0" 
+                    FontSize="15" 
+                    FontWeight="Normal" Cursor="Hand" Click="insertButton_Click" BorderBrush="#FF7ED048">
+            </Button>
+
+            <Button x:Name="edit_B" 
+                    Content="Edit" 
+                    Height="25"
+                    Width="150"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Background="#7ED048"
+                    Margin="15,386,0,0" 
+                    FontSize="15" 
+                    FontWeight="Normal" Cursor="Hand" BorderBrush="#FF7ED048" Click="editButton_Click">
+            </Button>
+
+            <Button x:Name="show_B" 
+                    Content="Show" 
+                    Height="25"
+                    Width="150"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Background="#7ED048"
+                    Margin="15,416,0,0" 
+                    FontSize="15" 
+                    FontWeight="Normal" Cursor="Hand" BorderBrush="#FF7ED048" Click="showButton_Click">
+            </Button>
+
+            <Button x:Name="delete_B" 
+                    Content="Delete" 
+                    Height="25"
+                    Width="150"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Background="#7ED048"
+                    Margin="15,446,0,0" 
+                    FontSize="15" 
+                    FontWeight="Normal" Cursor="Hand" BorderBrush="#FF7ED048" Click="deleteButton_Click">
+            </Button>
+
+            <Button x:Name="GitHub"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    ToolTip="MaterialDesignFloatingActionMiniDarkButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, 
+                    RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="15,0,125,10" Background="{x:Null}" BorderBrush="{x:Null}" Height="40" VerticalAlignment="Bottom">
+                    <materialDesign:PackIcon
+                        Kind="Github"
+                        Foreground="LightGray"
+                        Height="27"
+                        Width="27">
+                    </materialDesign:PackIcon>
+            </Button>
+            
+            <Button x:Name="Twitter"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    ToolTip="MaterialDesignFloatingActionMiniDarkButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="70,0,70,10" Background="{x:Null}" BorderBrush="{x:Null}" Height="40" VerticalAlignment="Bottom">
+                    <materialDesign:PackIcon
+                        Kind="Twitter"
+                        Foreground="LightGray"
+                        Height="27"
+                        Width="27">
+                    </materialDesign:PackIcon>
+            </Button>
+
+            <Button x:Name="Email"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    ToolTip="MaterialDesignFloatingActionMiniDarkButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Margin="125,0,15,10" Background="{x:Null}" BorderBrush="{x:Null}" Height="40" VerticalAlignment="Bottom">
+                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                           NavigateUri="http://www.msn.com">
+                    <materialDesign:PackIcon                
+                    Kind="EmailOutline"
+                    Foreground="LightGray"
+                    Height="27"
+                    Width="27">
+                    </materialDesign:PackIcon>
+                </Hyperlink>
+            </Button>
+
+        </Grid>
+
+        <!--data grid-->
+        <DataGrid x:Name="dataGrid1" 
+                  Margin="180,10,10,10" 
+                  VerticalGridLinesBrush="Gray"
+                  HorizontalGridLinesBrush="Gray" 
+                  Foreground="Black"
+                  Background="White" 
+                  BorderBrush="{x:Null}" 
+                  FontSize="15" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  MinRowHeight="90" 
+                  EnableColumnVirtualization="True" CellEditEnding="dataGrid1_CellEditEnding" HeadersVisibility="Column">
+
+            <DataGrid.GroupStyle>
+                <GroupStyle ContainerStyle="{StaticResource GroupHeaderStyle}">
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Photo" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Image Source="{Binding Photo}" Height="70" Width="auto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="EmployeeID"  Binding="{Binding Path=EmployeeID, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="Auto" />
+                <DataGridTextColumn Header="FirstName"  Binding="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+                <DataGridTextColumn Header="LastName"  Binding="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+                <DataGridTextColumn Header="Age"  Binding="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+                <DataGridTextColumn Header="EmployeeAdress"  Binding="{Binding Path=EmployeeAddress, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+
+                <DataGridTextColumn Header="DepartmentID" Binding="{Binding Path=DepartmentID}" Width="140"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+                <DataGridTextColumn Header="HeadID" Binding="{Binding Path=HeadID, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+                <DataGridTextColumn Header="DepartmentAdress" Binding="{Binding Path=DepartmentAdress, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+                <DataGridTextColumn Header="Phone"  Binding="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+    </Grid>
+
+</Window>

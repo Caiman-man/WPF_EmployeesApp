@@ -1,0 +1,66 @@
+﻿<Window x:Name="UpdateDepartmentWindow" x:Class="Ivanov_WPF_EF_Employees.UpdateDepartment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ivanov_WPF_EF_Employees"
+        mc:Ignorable="d"
+        Title="Update department" Height="270" Width="415" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+
+
+    <Grid Background="#161523">
+
+        <TextBox x:Name="titleTB"
+                 Margin="15,15,0,0" 
+                 TextWrapping="Wrap" 
+                 Foreground="White"
+                 Background="#211F2E"
+                 BorderBrush="#FF434343"
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="365" TextChanged="titleTB_TextChanged"/>
+        <TextBox x:Name="headIDTB"
+                 Margin="15,56,0,0" 
+                 TextWrapping="Wrap" 
+                 Foreground="White"
+                 Background="#211F2E" 
+                 BorderBrush="#FF434343" 
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" Width="365" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" TextChanged="headIDTB_TextChanged"/>
+        <TextBox x:Name="addressTB"
+                 Margin="15,96,0,0" 
+                 TextWrapping="Wrap" 
+                 Foreground="White"
+                 Background="#211F2E" 
+                 BorderBrush="#FF434343" 
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" Width="365" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="phoneTB"
+                 Margin="15,136,0,0" 
+                 TextWrapping="Wrap" 
+                 Foreground="White"
+                 Background="#211F2E" 
+                 BorderBrush="#FF434343"
+                 UseLayoutRounding="True" 
+                 VerticalContentAlignment="Center" Width="365" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" TextChanged="phoneTB_TextChanged"/>
+
+        <Button x:Name="updateB" 
+                VerticalAlignment="Bottom"
+                Content="Update" 
+                Margin="18,0,0,24"
+                Background="#FF673AB7"
+                Height="30" HorizontalAlignment="Left" Width="110" Click="updateB_Click" FontSize="15"/>
+        <Button x:Name="defaultB" 
+                VerticalAlignment="Bottom"
+                Content="Default" 
+                Margin="144,0,0,24"
+                Background="#FF673AB7"
+                Height="30" HorizontalAlignment="Left" Width="110" Click="defaultB_Click" FontSize="15"/>
+        <Button x:Name="cancelB" 
+                VerticalAlignment="Bottom"
+                Content="Cancel" 
+                Margin="270,0,0,24"
+                Background="#FF673AB7"
+                Height="30" HorizontalAlignment="Left" Width="110" Click="cancelB_Click" FontSize="15"/>
+
+    </Grid>
+</Window>
